@@ -6,7 +6,7 @@ const Income = () => {
   return (
     <div>Income
 
-    <AddIncomeModal />
+        <AddIncomeModal />
 
 
         <table class="w-50 table table-success .table-hover .table-bordered border-success text-center">
