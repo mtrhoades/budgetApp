@@ -23,7 +23,7 @@ const onSubmitForm =  async(e) => {
   return (
     <div>
         <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
+        Add Bank Account
         </Button>
 
         <Modal show={show} onHide={handleClose}>

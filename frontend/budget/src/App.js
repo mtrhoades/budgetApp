@@ -8,21 +8,21 @@ import MonthlyTotals from './components/MonthlyTotals';
 
 function App() {
   return (
-    <div className="App" style={{width: '1500px'}}>
+    <div className="App" style={{}}>
 
       <div>
         <BankAccounts />
       </div>
 
-      <div>
+      <div style={{paddingTop: '25px'}}>
         <Income />
       </div>
 
-      <div>
+      <div style={{paddingTop: '25px'}}>
         <Expenses />
       </div>
 
-      <div>
+      <div style={{paddingTop: '25px'}}>
         <MonthlyTotals />
       </div>
 

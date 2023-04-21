@@ -4,9 +4,10 @@ import React from 'react';
 
 const MonthlyTotals = () => {
   return (
-    <div>Monthly Totals
+    <div>
+        <h3>Monthly Totals</h3>
 
-        <table class="w-50 table table-warning .table-hover .table-bordered border-warning text-center">
+        <table className="w-50 table table-warning .table-hover .table-bordered border-warning text-center">
             <thead>
                 <tr style={{}}>
                     <th scope="col">Bank Account</th>

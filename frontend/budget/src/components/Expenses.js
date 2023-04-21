@@ -4,11 +4,12 @@ import AddExpenseModal from './AddExpenseModal';
 
 const Expenses = () => {
   return (
-    <div>Expenses
+    <div>
+        <h3>Expenses</h3>
 
         <AddExpenseModal />
 
-        <table class="w-50 table table-danger .table-hover .table-bordered border-danger text-center">
+        <table className="w-50 table table-danger .table-hover .table-bordered border-danger text-center">
             <thead>
                 <tr style={{}}>
                     <th scope="col">Expense</th>

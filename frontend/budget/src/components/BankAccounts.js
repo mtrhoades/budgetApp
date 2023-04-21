@@ -5,11 +5,12 @@ import AddBankAccountModal from './AddBankAccountModal';
 
 const BankAccounts = () => {
   return (
-    <div>BankAccounts
+    <div>
+        <h3>BankAccounts</h3>
 
         <AddBankAccountModal />
 
-        <table class="w-50 table table-info table-hover .table-bordered border-info text-center">
+        <table className="w-50 table table-info table-hover .table-bordered border-info text-center">
             <thead>
                 <tr>
                     <th scope="col">Type</th>
