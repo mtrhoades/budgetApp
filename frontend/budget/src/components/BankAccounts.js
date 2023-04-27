@@ -1,9 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import AddBankAccountModal from './AddBankAccountModal';
 
 
 
 const BankAccounts = () => {
+// vanilla js section:
+
+// useState section:
+const [accounts, setAccounts] = useState([]);
+
+
+// helper function section:
+    // fetch request to backend
+const getAccounts = async () => {
+    try {
+        const response = await fetch('http://localhost:3027/budget');
+        const jsonData = await response.json();
+
+        console.log(jsonData);
+
+        setAccounts(jsonData);
+
+    } catch (error) {
+        console.error(error.message)
+    }
+};
+
+// useEffect section:
+useEffect(() => {
+    getAccounts();
+}, []);
+
   return (
     <div>
         <h3>BankAccounts</h3>
@@ -20,12 +47,14 @@ const BankAccounts = () => {
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>FHB</td>
-                    <td>Checking</td>
-                    <td>$400.76</td>
-                    <td>04/21/2023</td>
+                {accounts.map(account => (
+                <tr key={account.account_id}>
+                    <td>{account.account_name}</td>
+                    <td>{account.account_type}</td>
+                    <td>{account.account_balance}</td>
+                    <td>{account.account_date}</td>
                 </tr>
+                ))}
                 
             </tbody>
         </table>
