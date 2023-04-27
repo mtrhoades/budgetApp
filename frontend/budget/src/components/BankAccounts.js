@@ -13,6 +13,7 @@ const BankAccounts = () => {
         <table className="w-50 table table-info table-hover .table-bordered border-info text-center">
             <thead>
                 <tr>
+                    <th scope="col">Name</th>
                     <th scope="col">Type</th>
                     <th scope="col">Balance</th>
                     <th scope="col">Current Date</th>
@@ -20,6 +21,7 @@ const BankAccounts = () => {
             </thead>
             <tbody>
                 <tr>
+                    <td>FHB</td>
                     <td>Checking</td>
                     <td>$400.76</td>
                     <td>04/21/2023</td>
