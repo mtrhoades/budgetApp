@@ -50,7 +50,7 @@ const onSubmitForm =  async(e) => {
                 <Form>
 
                     <Form.Group className="mb-3">
-                        <Form.Label>Bank Account Type</Form.Label>
+                        <Form.Label>Bank Account Type:</Form.Label>
                         <select class="custom-select" id="inputGroupSelect01" required>
                             <option selected>Choose...</option>
                             <option value="1">Checking</option>
@@ -60,17 +60,17 @@ const onSubmitForm =  async(e) => {
                     </Form.Group>
 
                     <Form.Group className="mb-3">
-                        <Form.Label>Bank Account Name</Form.Label>
+                        <Form.Label>Bank Account Name:</Form.Label>
                         <input type="text" name="nameTextBox" id="nameTextBox" required></input>
                     </Form.Group>
 
                     <Form.Group className="mb-3">
-                        <Form.Label for="currency-field">Enter Balance Amount</Form.Label>
+                        <Form.Label for="currency-field">Enter Balance Amount:</Form.Label>
                         <CurrencyInput type="text" name="currency-field" id="currency-field" onValueChange={(value, name) => console.log(value, name)} prefix={'$'} />
                     </Form.Group>
 
                     <Form.Group className="mb-3">
-                        <Form.Label>Current Date</Form.Label>
+                        <Form.Label>Current Date:</Form.Label>
                         <input type="date" name="dateTextBox" id="dateTextBox" value={date.toLocaleDateString('en-CA')} onChange={findCurrentDate} ></input>
                     </Form.Group>
 
