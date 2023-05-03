@@ -31,7 +31,19 @@ const AddBankAccountModal = () => {
 // onSubmitForm button to add data to table
 const onSubmitForm =  async(e) => {
     e.preventDefault();
-    
+    try {
+        const body = { accountType, accountName, balance };
+        const response = await fetch("http://localhost:3027/budget", {
+            method: "POST",
+            headers: { "Content-Type": "application/json"},
+            body: JSON.stringify(body)
+        });
+
+        console.log(response)
+
+    } catch (err) {
+        console.error(err.message);
+    }
 }
 
    // jsx section:
