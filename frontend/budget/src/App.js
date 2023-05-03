@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="App" style={{}}>
 
-      <div>
+      <div style={{width: '50vw'}}>
         <BankAccounts />
       </div>
 
