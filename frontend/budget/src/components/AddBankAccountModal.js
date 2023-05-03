@@ -13,17 +13,15 @@ const AddBankAccountModal = () => {
     defaultDate.setDate(defaultDate.getDate())
 // useState section:
    const [show, setShow] = useState(false); // for modal
-   const [inputBalance, setInputBalance] = useState(''); // for currency inputs
+
+   const [accountType, setAccountType] = useState(''); // for bank account type
+   const [accountName, setAccountName] = useState(''); // for bank account name
+   const [balance, setBalance] = useState(''); // for balance input
    const [date, setDate] = useState(defaultDate); // for current date
 
 // modal helper functons:
   const handleClose = () => setShow(false); // closing the modal
   const handleShow = () => setShow(true); // opening the modal
-
-// handleChange function for currency input value
-    const handleChange = e => {
-        setInputBalance(e.target.value);
-    };
 
 // date functions for current date
     const findCurrentDate = (e) => {
@@ -32,7 +30,8 @@ const AddBankAccountModal = () => {
 
 // onSubmitForm button to add data to table
 const onSubmitForm =  async(e) => {
-
+    e.preventDefault();
+    
 }
 
    // jsx section:
