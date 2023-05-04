@@ -2,14 +2,14 @@ CREATE DATABASE personalbudget;
 
 CREATE TABLE bankaccounts(
     account_id SERIAL PRIMARY KEY,
-    account_name VARCHAR(255) NOT NULL,
-    account_type VARCHAR(255) NOT NULL,
-    account_balance MONEY NOT NULL,
-    account_date DATE NOT NULL
+    account_name VARCHAR(255),
+    account_type VARCHAR(255),
+    balance MONEY,
+    account_date DATE
 );
 
 INSERT INTO bankaccounts(
-    account_id, account_name, account_type, account_balance, account_date)
+    account_id, account_name, account_type, balance, account_date)
     VALUES(
         1, 'SECU', 'Savings', 500, '2023-04-26'
     ), (

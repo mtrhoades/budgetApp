@@ -14,9 +14,9 @@ const AddBankAccountModal = () => {
 // useState section:
    const [show, setShow] = useState(false); // for modal
 
-   const [accountType, setAccountType] = useState(''); // for bank account type
-   const [accountName, setAccountName] = useState(''); // for bank account name
-   const [balance, setBalance] = useState(''); // for balance input
+   const [account_name, setAccount_name] = useState(''); // for bank account name
+   const [account_type, setAccount_type] = useState(''); // for bank account type
+   const [account_balance, setAccount_balance] = useState(''); // for balance input
    const [date, setDate] = useState(defaultDate); // for current date
 
 // modal helper functons:
@@ -32,7 +32,7 @@ const AddBankAccountModal = () => {
 const onSubmitForm =  async(e) => {
     e.preventDefault();
     try {
-        const body = { accountType, accountName, balance };
+        const body = { account_name, account_type, account_balance };
         const response = await fetch("http://localhost:3027/budget", {
             method: "POST",
             headers: { "Content-Type": "application/json"},
@@ -40,6 +40,8 @@ const onSubmitForm =  async(e) => {
         });
 
         console.log(response)
+
+        window.location = '/';
 
     } catch (err) {
         console.error(err.message);
@@ -61,23 +63,34 @@ const onSubmitForm =  async(e) => {
                 <Form>
 
                     <Form.Group className="mb-3">
+                        <Form.Label>Bank Account Name:</Form.Label>
+                        <input type="text" name="nameTextBox" id="nameTextBox" required
+                        value={ account_name }
+                        onChange={e => setAccount_name(e.target.value)}
+                        ></input>
+                    </Form.Group>
+
+                    <Form.Group className="mb-3">
                         <Form.Label>Bank Account Type:</Form.Label>
                         <select class="custom-select" id="inputGroupSelect01" required>
                             <option selected>Choose...</option>
                             <option value="1">Checking</option>
                             <option value="2">Savings</option>
                             <option value="3">Credit Card</option>
+                            value={ account_type }
+                            onChange={e => setAccount_type(e.target.value)}
                         </select>
                     </Form.Group>
 
                     <Form.Group className="mb-3">
-                        <Form.Label>Bank Account Name:</Form.Label>
-                        <input type="text" name="nameTextBox" id="nameTextBox" required></input>
-                    </Form.Group>
-
-                    <Form.Group className="mb-3">
                         <Form.Label for="currency-field">Enter Balance Amount:</Form.Label>
-                        <CurrencyInput type="text" name="currency-field" id="currency-field" onValueChange={(value, name) => console.log(value, name)} prefix={'$'} />
+                        <CurrencyInput
+                        type="text"
+                        name="currency-field" id="currency-field"
+                        value={ account_balance }
+                        // onValueChange={(value, name) => console.log(value, name)} prefix={'$'} 
+                        onChange={e => setAccount_balance(e.target.value)}
+                        />
                     </Form.Group>
 
                     <Form.Group className="mb-3">
@@ -91,7 +104,7 @@ const onSubmitForm =  async(e) => {
             <Button variant="secondary" onClick={handleClose}>
                 Close
             </Button>
-            <Button variant="primary" onClick={handleClose}>
+            <Button variant="primary" onClick={onSubmitForm}>
                 Save Changes
             </Button>
             </Modal.Footer>

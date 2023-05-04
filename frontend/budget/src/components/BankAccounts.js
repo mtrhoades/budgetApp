@@ -51,7 +51,7 @@ useEffect(() => {
                 <tr key={account.account_id}>
                     <td>{account.account_name}</td>
                     <td>{account.account_type}</td>
-                    <td>{account.account_balance}</td>
+                    <td>{account.balance}</td>
                     <td>{account.account_date.split('', 10)}</td>
                 </tr>
                 ))}
