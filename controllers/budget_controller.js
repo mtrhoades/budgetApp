@@ -23,10 +23,10 @@ budget.get('/', async (req, res) => {
     // bank accounts modal CREATE ROUTE (updating/POSTING info. from modal)
 budget.post('/', async (req, res) => {
     try {
-        const { balance } = req.body;
+        const { account_name, account_type, balance, account_date } = req.body;
         const newAccount = await pool.query(
-            "INSERT INTO bankaccounts (balance) VALUES($1) RETURNING *",
-            [balance]
+            "INSERT INTO bankaccounts (account_name, account_type, balance, account_date) VALUES($1, $2, $3, $4) RETURNING *",
+            [account_name, account_type, balance, account_date]
         );
 
         res.json(newAccount.rows[0]);
@@ -34,7 +34,10 @@ budget.post('/', async (req, res) => {
     } catch (error) {
         res.status(404).send('Error 404 Page Not Found!')
     }
-})
+});
+
+
+
 
 
 

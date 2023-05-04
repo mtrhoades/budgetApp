@@ -31,6 +31,7 @@ useEffect(() => {
     getAccounts();
 }, []);
 
+
   return (
     <div>
         <h3>BankAccounts</h3>

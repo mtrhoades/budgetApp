@@ -3,7 +3,6 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
-import CurrencyInput from 'react-currency-input-field';
 
 
 
@@ -16,8 +15,8 @@ const AddBankAccountModal = () => {
 
    const [account_name, setAccount_name] = useState(''); // for bank account name
    const [account_type, setAccount_type] = useState(''); // for bank account type
-   const [account_balance, setAccount_balance] = useState(''); // for balance input
-   const [date, setDate] = useState(defaultDate); // for current date
+   const [balance, setBalance] = useState(''); // for balance input
+   const [account_date, setAccount_date] = useState(defaultDate); // for current date
 
 // modal helper functons:
   const handleClose = () => setShow(false); // closing the modal
@@ -25,14 +24,14 @@ const AddBankAccountModal = () => {
 
 // date functions for current date
     const findCurrentDate = (e) => {
-        setDate(new Date(e.target.value))
+        setAccount_date(new Date(e.target.value))
     }
 
 // onSubmitForm button to add data to table
 const onSubmitForm =  async(e) => {
     e.preventDefault();
     try {
-        const body = { account_name, account_type, account_balance };
+        const body = { account_name, account_type, balance, account_date };
         const response = await fetch("http://localhost:3027/budget", {
             method: "POST",
             headers: { "Content-Type": "application/json"},
@@ -62,7 +61,7 @@ const onSubmitForm =  async(e) => {
             <Modal.Body>
                 <Form>
 
-                    <Form.Group className="mb-3">
+                    <Form.Group className="mb-3 accountName">
                         <Form.Label>Bank Account Name:</Form.Label>
                         <input type="text" name="nameTextBox" id="nameTextBox" required
                         value={ account_name }
@@ -70,32 +69,34 @@ const onSubmitForm =  async(e) => {
                         ></input>
                     </Form.Group>
 
-                    <Form.Group className="mb-3">
+                    <Form.Group className="mb-3, accountType">
                         <Form.Label>Bank Account Type:</Form.Label>
-                        <select class="custom-select" id="inputGroupSelect01" required>
-                            <option selected>Choose...</option>
-                            <option value="1">Checking</option>
-                            <option value="2">Savings</option>
-                            <option value="3">Credit Card</option>
+                        <select class="custom-select"
+                            id="inputGroupSelect01"
                             value={ account_type }
-                            onChange={e => setAccount_type(e.target.value)}
+                            onChange={e => setAccount_type(e.target.value)} required>
+                                <option selected>Choose...</option>
+                                <option value="Checking">Checking</option>
+                                <option value="Savings">Savings</option>
+                                <option value="Credit Card">Credit Card</option>
                         </select>
                     </Form.Group>
 
-                    <Form.Group className="mb-3">
+                    <Form.Group className="mb-3 balance">
                         <Form.Label for="currency-field">Enter Balance Amount:</Form.Label>
-                        <CurrencyInput
-                        type="text"
-                        name="currency-field" id="currency-field"
-                        value={ account_balance }
-                        // onValueChange={(value, name) => console.log(value, name)} prefix={'$'} 
-                        onChange={e => setAccount_balance(e.target.value)}
+                        <Form.Control
+                        type="Text"
+                        name="currency-field"
+                        id="currency-field"
+                        value={ balance }
+                        prefix={'$'} 
+                        onChange={e => setBalance(e.target.value)}
                         />
                     </Form.Group>
 
-                    <Form.Group className="mb-3">
+                    <Form.Group className="mb-3 date">
                         <Form.Label>Current Date:</Form.Label>
-                        <input type="date" name="dateTextBox" id="dateTextBox" value={date.toLocaleDateString('en-CA')} onChange={findCurrentDate} ></input>
+                        <input type="date" name="dateTextBox" id="dateTextBox" value={account_date.toLocaleDateString('en-CA')} onChange={findCurrentDate} ></input>
                     </Form.Group>
 
                 </Form>
