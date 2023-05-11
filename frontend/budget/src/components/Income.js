@@ -26,6 +26,11 @@ const [incomes, setIncomes] = useState([]);
   };
 
 
+  // useEffect section
+useEffect(() => {
+  getIncomes();
+}, []);
+
 
 
   return (
