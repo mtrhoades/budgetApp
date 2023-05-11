@@ -1,24 +1,58 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
 
 
 
 const AddIncomeModal = () => {
+
+// vanilla js section:
+  let defaultDate = new Date();
+  defaultDate.setDate(defaultDate.getDate())
+
 // useState section:
-   const [show, setShow] = useState(false); // for modal
+  const [show, setShow] = useState(false); // for modal
+
+  const [income_source, setIncome_source] = useState(''); // for income source
+  const [income_amount, setIncome_amount] = useState(''); // for income amount
+  const [income_date, setIncome_date] = useState(defaultDate); // for date received
+
 
 // modal helper functons:
   const handleClose = () => setShow(false); // closing the modal
   const handleShow = () => setShow(true); // opening the modal
 
-// onSubmitForm button to add data to table
-const onSubmitForm =  async(e) => {
-
+// date functions for current date (allows user to change date from current date)
+  const findCurrentDate = (e) => {
+    setIncome_date(new Date(e.target.value))
 }
 
-   // jsx section:
+
+// onSubmitForm button to add data to table
+const onSubmitForm =  async(e) => {
+  e.preventDefault();
+  try {
+      const body = { income_source, income_amount, income_date };
+      const response = await fetch("http://localhost:3027/budget", {
+          method: "POST",
+          headers: { "Content-Type": "application/json"},
+          body: JSON.stringify(body)
+      });
+
+      console.log(response)
+
+      window.location = '/';
+
+  } catch (err) {
+      console.error(err.message);
+  }
+};
+
+
+
+// jsx section:
   return (
     <div>
         <Button variant="success" onClick={handleShow}>
@@ -27,14 +61,39 @@ const onSubmitForm =  async(e) => {
       
         <Modal show={show} onHide={handleClose}>
             <Modal.Header 
-            closeButton>
-            <Modal.Title style={{color: 'white'}}>Add New Stock</Modal.Title>
+              closeButton>
+            <Modal.Title>Add Income</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-            <form>
-                <div class="form-group row">
-                </div>  
-            </form>
+            <Form>
+
+              <Form.Group className="mb-3 accountName">
+                  <Form.Label>Income Source:</Form.Label>
+                  <input type="text" name="nameTextBox" id="nameTextBox" required
+                  // value={ account_name }
+                  // onChange={e => setAccount_name(e.target.value)}
+                  ></input>
+              </Form.Group>
+
+              <Form.Group className="mb-3 balance">
+                  <Form.Label for="currency-field">Enter Amount:</Form.Label>
+                  <Form.Control
+                  type="Text"
+                  name="currency-field"
+                  id="currency-field"
+                  prefix={'$'} 
+                  // value={ balance }
+                  // onChange={e => setBalance(e.target.value)}
+                  />
+              </Form.Group>
+
+              <Form.Group className="mb-3 date">
+                  <Form.Label>Current Date:</Form.Label>
+                  <input type="date" name="dateTextBox" id="dateTextBox" value={income_date.toLocaleDateString('en-CA')} onChange={findCurrentDate} ></input>
+              </Form.Group>
+
+            </Form>
+
             </Modal.Body>
             <Modal.Footer>
             <Button variant="outline-success" onClick={onSubmitForm}>

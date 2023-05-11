@@ -28,7 +28,7 @@ const AddBankAccountModal = () => {
     }
 
 // onSubmitForm button to add data to table
-const onSubmitForm =  async(e) => {
+    const onSubmitForm =  async(e) => {
     e.preventDefault();
     try {
         const body = { account_name, account_type, balance, account_date };
@@ -45,9 +45,10 @@ const onSubmitForm =  async(e) => {
     } catch (err) {
         console.error(err.message);
     }
-}
+};
 
-   // jsx section:
+
+// jsx section:
   return (
     <div>
         <Button variant="primary" onClick={handleShow}>
@@ -55,8 +56,9 @@ const onSubmitForm =  async(e) => {
         </Button>
 
         <Modal show={show} onHide={handleClose}>
-            <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
+            <Modal.Header
+                closeButton>
+            <Modal.Title>Add a Bank Account</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <Form>
@@ -88,8 +90,8 @@ const onSubmitForm =  async(e) => {
                         type="Text"
                         name="currency-field"
                         id="currency-field"
-                        value={ balance }
                         prefix={'$'} 
+                        value={ balance }
                         onChange={e => setBalance(e.target.value)}
                         />
                     </Form.Group>
