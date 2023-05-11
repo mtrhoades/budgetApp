@@ -37,6 +37,39 @@ budget.post('/', async (req, res) => {
 });
 
 
+// DELETE ROUTE for bank accounts component
+budget.delete('/:account_id', async (req, res) => {
+    try {
+        const { account_id } = req.params;
+        const deleteAccount = await pool.query(
+            "DELETE FROM bankaccounts WHERE account_id = $1",
+            [account_id]
+        );
+
+        res.json("Account Deleted!")
+
+    } catch (error) {
+        res.status(404).send('Error 404 Page Not Found!')
+    }
+});
+
+
+// GET request for a single bank account
+budget.get('/:account_id', async (req, res) => {
+    try {
+        const { account_id } = req.params;
+        const account = await pool.query(
+            "SELECT * FROM bankaccounts WHERE account_id = $1",
+            [account_id]
+        );
+
+        res.json(account.rows[0]);
+
+    } catch (error) {
+        res.status(404).send('Error 404 Page Not Found!')
+    }
+});
+
 
 
 

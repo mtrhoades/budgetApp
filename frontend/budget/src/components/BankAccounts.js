@@ -11,7 +11,7 @@ const [accounts, setAccounts] = useState([]);
 
 
 // helper function section:
-    // fetch request to backend
+    // fetch GET request to backend
 const getAccounts = async () => {
     try {
         const response = await fetch('http://localhost:3027/budget');
@@ -25,6 +25,10 @@ const getAccounts = async () => {
         console.error(error.message)
     }
 };
+
+// fetch Delete request for delete buttons
+
+
 
 // useEffect section:
 useEffect(() => {
@@ -41,6 +45,7 @@ useEffect(() => {
         <table className="w-50 table table-info table-hover .table-bordered border-info text-center">
             <thead>
                 <tr>
+                    <th scope="col"></th>
                     <th scope="col">Name</th>
                     <th scope="col">Type</th>
                     <th scope="col">Balance</th>
@@ -50,6 +55,7 @@ useEffect(() => {
             <tbody>
                 {accounts.map(account => (
                 <tr key={account.account_id}>
+                    <td>Delete Button Here</td>
                     <td>{account.account_name}</td>
                     <td>{account.account_type}</td>
                     <td>{account.balance}</td>
