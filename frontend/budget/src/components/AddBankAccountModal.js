@@ -32,7 +32,7 @@ const AddBankAccountModal = () => {
     e.preventDefault();
     try {
         const body = { account_name, account_type, balance, account_date };
-        const response = await fetch("http://localhost:3027/budget", {
+        const response = await fetch("http://localhost:3027/bankaccount", {
             method: "POST",
             headers: { "Content-Type": "application/json"},
             body: JSON.stringify(body)

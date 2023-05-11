@@ -18,9 +18,14 @@ app.get('/', (req, res) => {
     res.send("We up in here on that landing page though!")
 });
 
-// controller route
-const budgetController = require('./controllers/budget_controller');
-app.use('/budget', budgetController);
+// controller routes:
+    // bank accounts controller
+const bankAccountController = require('./controllers/bankaccount_controller');
+app.use('/bankaccount', bankAccountController);
+
+    // income controller
+const incomeController = require('./controllers/income_controller');
+app.use('/income', incomeController);
 
 // server listen
 app.listen(PORT, () => {

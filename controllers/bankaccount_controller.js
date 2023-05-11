@@ -3,11 +3,11 @@ const express = require('express');
 
 const pool = require('../models/db');
 
-const budget = express.Router();
+const bankaccount = express.Router();
 
 // routes:
     // bank accounts READ All ROUTE (list all rows)
-budget.get('/', async (req, res) => {
+bankaccount.get('/', async (req, res) => {
     try {
         const allAccounts = await pool.query(
             "SELECT * FROM bankaccounts"
@@ -21,7 +21,7 @@ budget.get('/', async (req, res) => {
 });
 
     // bank accounts modal CREATE ROUTE (updating/POSTING info. from modal)
-budget.post('/', async (req, res) => {
+bankaccount.post('/', async (req, res) => {
     try {
         const { account_name, account_type, balance, account_date } = req.body;
         const newAccount = await pool.query(
@@ -38,7 +38,7 @@ budget.post('/', async (req, res) => {
 
 
 // DELETE ROUTE for bank accounts component
-budget.delete('/:account_id', async (req, res) => {
+bankaccount.delete('/:account_id', async (req, res) => {
     try {
         const { account_id } = req.params;
         const deleteAccount = await pool.query(
@@ -55,7 +55,7 @@ budget.delete('/:account_id', async (req, res) => {
 
 
 // GET request for a single bank account
-budget.get('/:account_id', async (req, res) => {
+bankaccount.get('/:account_id', async (req, res) => {
     try {
         const { account_id } = req.params;
         const account = await pool.query(
@@ -74,4 +74,4 @@ budget.get('/:account_id', async (req, res) => {
 
 
 
-module.exports = budget;
+module.exports = bankaccount;

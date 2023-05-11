@@ -15,7 +15,7 @@ const [accounts, setAccounts] = useState([]);
     // fetch GET request to backend
 const getAccounts = async () => {
     try {
-        const response = await fetch('http://localhost:3027/budget');
+        const response = await fetch('http://localhost:3027/bankaccount');
         const jsonData = await response.json();
 
         console.log(jsonData);
@@ -30,7 +30,7 @@ const getAccounts = async () => {
 // fetch Delete request for delete buttons
 const deleteAccount = async (account_id) => {
     try {
-       await fetch(`http://localhost:3027/budget/${account_id}`, {
+       await fetch(`http://localhost:3027/bankaccount/${account_id}`, {
         method: 'DELETE'
        });
 
