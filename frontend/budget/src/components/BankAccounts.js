@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import AddBankAccountModal from './AddBankAccountModal';
+import CloseButton from 'react-bootstrap/CloseButton';
 
 
 
@@ -27,7 +28,18 @@ const getAccounts = async () => {
 };
 
 // fetch Delete request for delete buttons
+const deleteAccount = async (account_id) => {
+    try {
+       await fetch(`http://localhost:3027/budget/${account_id}`, {
+        method: 'DELETE'
+       });
 
+       setAccounts(accounts.filter(account => account.account_id !== account_id));
+
+    } catch (error) {
+        console.error(error.message);
+    }
+}
 
 
 // useEffect section:
@@ -55,7 +67,12 @@ useEffect(() => {
             <tbody>
                 {accounts.map(account => (
                 <tr key={account.account_id}>
-                    <td>Delete Button Here</td>
+                    <td>
+                        <CloseButton
+                            style={{width: '6px', height: '6px'}} 
+                            onClick={() => deleteAccount(account.account_id)}
+                        />
+                    </td>
                     <td>{account.account_name}</td>
                     <td>{account.account_type}</td>
                     <td>{account.balance}</td>
