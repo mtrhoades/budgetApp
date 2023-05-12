@@ -35,7 +35,7 @@ const onSubmitForm =  async(e) => {
   e.preventDefault();
   try {
       const body = { income_source, income_amount, income_date };
-      const response = await fetch("http://localhost:3027/budget", {
+      const response = await fetch("http://localhost:3027/income", {
           method: "POST",
           headers: { "Content-Type": "application/json"},
           body: JSON.stringify(body)
@@ -70,8 +70,8 @@ const onSubmitForm =  async(e) => {
               <Form.Group className="mb-3 accountName">
                   <Form.Label>Income Source:</Form.Label>
                   <input type="text" name="nameTextBox" id="nameTextBox" required
-                  // value={ account_name }
-                  // onChange={e => setAccount_name(e.target.value)}
+                  value={ income_source }
+                  onChange={e => setIncome_source(e.target.value)}
                   ></input>
               </Form.Group>
 
@@ -82,8 +82,8 @@ const onSubmitForm =  async(e) => {
                   name="currency-field"
                   id="currency-field"
                   prefix={'$'} 
-                  // value={ balance }
-                  // onChange={e => setBalance(e.target.value)}
+                  value={ income_amount }
+                  onChange={e => setIncome_amount(e.target.value)}
                   />
               </Form.Group>
 

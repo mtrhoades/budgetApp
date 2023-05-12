@@ -20,6 +20,22 @@ income.get('/', async (req, res) => {
     }
 });
 
+income.post('/', async (req, res) => {
+    try {
+        const { income_source, income_amount, income_date } = req.body;
+        const newIncome = await pool.query(
+            "INSERT INTO income(income_source, income_amount, income_date) VALUES($1, $2, $3) RETURNING *", 
+            [income_source, income_amount, income_date]
+        );
+
+            res.json(newIncome.rows[0])
+
+    } catch (error) {
+        res.status(404).send('Error 404 Page Not Found!');
+    }
+});
+
+income.delete()
 
 
 module.exports = income;

@@ -25,7 +25,7 @@ bankaccount.post('/', async (req, res) => {
     try {
         const { account_name, account_type, balance, account_date } = req.body;
         const newAccount = await pool.query(
-            "INSERT INTO bankaccounts (account_name, account_type, balance, account_date) VALUES($1, $2, $3, $4) RETURNING *",
+            "INSERT INTO bankaccounts(account_name, account_type, balance, account_date) VALUES($1, $2, $3, $4) RETURNING *",
             [account_name, account_type, balance, account_date]
         );
 
