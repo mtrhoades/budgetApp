@@ -46,7 +46,7 @@ bankaccount.delete('/:account_id', async (req, res) => {
             [account_id]
         );
 
-        res.json("Account Deleted!")
+        res.json("Account Deleted!");
 
     } catch (error) {
         res.status(404).send('Error 404 Page Not Found!')

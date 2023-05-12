@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import AddIncomeModal from './AddIncomeModal';
+import CloseButton from 'react-bootstrap/CloseButton';
 
 
 const Income = () => {
@@ -24,6 +25,20 @@ const [incomes, setIncomes] = useState([]);
           console.error(error.message)
       }
   };
+
+// fetch Delete request for delete buttons
+const deleteIncome = async (income_id) => {
+  try {
+     await fetch(`http://localhost:3027/income/${income_id}`, {
+      method: 'DELETE'
+     });
+
+     setIncomes(incomes.filter(income => income.income_id !== income_id));
+
+  } catch (error) {
+      console.error(error.message);
+  }
+}
 
 
   // useEffect section
@@ -52,7 +67,12 @@ useEffect(() => {
             <tbody>
                 {incomes.map(income => (
                 <tr key={income.income_id}>
-                    <td>Delete Button Here</td>
+                    <td>
+                      <CloseButton
+                        style={{width: '6px', height: '6px'}} 
+                        onClick={() => deleteIncome(income.income_id)}
+                      />
+                    </td>
                     <td>{income.income_source}</td>
                     <td>{income.income_amount}</td>
                     <td>{income.income_date.split('', 10)}</td>

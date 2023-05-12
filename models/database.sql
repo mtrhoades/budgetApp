@@ -37,3 +37,16 @@ INSERT INTO income(
 );
 
 
+-- expenses table
+CREATE TABLE expenses(
+    expense_id SERIAL PRIMARY KEY,
+    expense_expense VARCHAR(255),
+    expense_amount MONEY,
+    expense_date DATE
+);
+
+INSERT INTO expenses(
+    expense_id, expense_expense, expense_amount, expense_date)
+    VALUES(
+        1, 'Electricity', 250, '2023-05-18'
+);

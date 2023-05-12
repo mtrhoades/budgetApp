@@ -5,8 +5,8 @@ const pool = require('../models/db');
 
 const income = express.Router();
 
-// routes:
-    // income READ ALL route (GET)
+// Routes:
+    // READ ALL route (GET)
 income.get('/', async (req, res) => {
     try {
         const getIncome = await pool.query(
@@ -20,6 +20,7 @@ income.get('/', async (req, res) => {
     }
 });
 
+// Create Route (POST)
 income.post('/', async (req, res) => {
     try {
         const { income_source, income_amount, income_date } = req.body;
@@ -35,7 +36,21 @@ income.post('/', async (req, res) => {
     }
 });
 
-income.delete()
+// DELETE Route 
+income.delete('/:income_id', async (req, res) => {
+    try {
+        const { income_id } = req.params;
+        const deleteAccount = await pool.query(
+            "DELETE FROM income WHERE income_id = $1", 
+            [income_id]
+        );
+
+        res.json('Income Deleted!');
+
+    } catch (error) {
+        res.status(404).send('Error 404 Page Not Found!')     
+    }
+});
 
 
 module.exports = income;
