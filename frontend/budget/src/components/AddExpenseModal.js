@@ -8,25 +8,17 @@ import { useState } from 'react';
 
 const AddExpenseModal = () => {
 // vanilla js section:
-let defaultDate = new Date();
-defaultDate.setDate(defaultDate.getDate())
-
 
 // useState section:
   const [show, setShow] = useState(false); // for modal
 
   const [expense_expense, setExpense_expense] = useState(''); // for expense
   const [expense_amount, setExpense_amount] = useState(''); // for expense amount
-  const [expense_date, setExpense_date] = useState(defaultDate); // for expense date
+  const [expense_date, setExpense_date] = useState(''); // for expense date
 
 // modal helper functons:
   const handleClose = () => setShow(false); // closing the modal
   const handleShow = () => setShow(true); // opening the modal
-
-// date functions for current date (allows user to change date from current date)
-const findCurrentDate = (e) => {
-  setExpense_date(new Date(e.target.value))
-}
 
 
 // onSubmitForm button to add data to table
@@ -86,7 +78,7 @@ const onSubmitForm =  async(e) => {
 
                 <Form.Group className="mb-3 date">
                     <Form.Label>Date Due:</Form.Label>
-                    <Form.Control type="date" name="dateTextBox" id="dateTextBox" value={expense_date.toLocaleDateString('en-CA')} onChange={findCurrentDate} />
+                    <Form.Control type="date" name="dateTextBox" id="dateTextBox" value={expense_date} onChange={e => setExpense_date(e.target.value)} />
                 </Form.Group>
 
               </Form>

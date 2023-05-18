@@ -9,25 +9,18 @@ import { useState } from 'react';
 const AddIncomeModal = () => {
 
 // vanilla js section:
-  let defaultDate = new Date();
-  defaultDate.setDate(defaultDate.getDate())
 
 // useState section:
   const [show, setShow] = useState(false); // for modal
 
   const [income_source, setIncome_source] = useState(''); // for income source
   const [income_amount, setIncome_amount] = useState(''); // for income amount
-  const [income_date, setIncome_date] = useState(defaultDate); // for date received
+  const [income_date, setIncome_date] = useState(''); // for date received
 
 
 // modal helper functons:
   const handleClose = () => setShow(false); // closing the modal
   const handleShow = () => setShow(true); // opening the modal
-
-// date functions for current date (allows user to change date from current date)
-  const findCurrentDate = (e) => {
-    setIncome_date(new Date(e.target.value))
-}
 
 
 // onSubmitForm button to add data to table
@@ -89,7 +82,7 @@ const onSubmitForm =  async(e) => {
 
               <Form.Group className="mb-3 date">
                   <Form.Label>Date Received:</Form.Label>
-                  <Form.Control type="date" name="dateTextBox" id="dateTextBox" value={income_date.toLocaleDateString('en-CA')} onChange={findCurrentDate} />
+                  <Form.Control type="date" name="dateTextBox" id="dateTextBox" value={income_date} onChange={e => setIncome_date(e.target.value)} />
               </Form.Group>
 
             </Form>
