@@ -67,15 +67,15 @@ useEffect(() => {
             <tbody>
                 {incomes.map(income => (
                 <tr key={income.income_id}>
-                    <td>
-                      <CloseButton
-                        style={{width: '6px', height: '6px'}} 
-                        onClick={() => deleteIncome(income.income_id)}
-                      />
-                    </td>
-                    <td>{income.income_source}</td>
-                    <td>{income.income_amount}</td>
-                    <td>{income.income_date.split('', 10)}</td>
+                  <td>
+                    <CloseButton
+                      style={{width: '6px', height: '6px'}} 
+                      onClick={() => deleteIncome(income.income_id)}
+                    />
+                  </td>
+                  <td>{income.income_source}</td>
+                  <td>{income.income_amount}</td>
+                  <td>{income.income_date.split('', 10)}</td>
                 </tr>
                 ))}
                 

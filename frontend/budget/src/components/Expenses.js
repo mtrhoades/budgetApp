@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import AddExpenseModal from './AddExpenseModal';
+import CloseButton from 'react-bootstrap/CloseButton';
 
 
 const Expenses = () => {
@@ -21,6 +22,20 @@ const getExpenses = async () => {
 
   } catch (error) {
       console.error(error.message)
+  }
+};
+
+// fetch Delete request for delete buttons
+const deleteExpense = async (expense_id) => {
+  try {
+     await fetch(`http://localhost:3027/expense/${expense_id}`, {
+      method: 'DELETE'
+     });
+
+     setExpenses(expenses.filter(expense => expense.expense_id !== expense_id));
+
+  } catch (error) {
+      console.error(error.message);
   }
 };
 
@@ -49,7 +64,12 @@ useEffect(() => {
             <tbody>
               {expenses.map(expense => (
               <tr key={expense.expense_id}>
-                <td>delete button here</td>
+                <td>
+                  <CloseButton
+                    style={{width: '6px', height: '6px'}} 
+                    onClick={() => deleteExpense(expense.expense_id)}
+                  />
+                </td>
                 <td>{expense.expense_expense}</td>
                 <td>{expense.expense_amount}</td>
                 <td>{expense.expense_date.split('', 10)}</td>

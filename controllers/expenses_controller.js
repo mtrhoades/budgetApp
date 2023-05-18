@@ -37,7 +37,21 @@ expense.post('/', async (req, res) => {
     }
 });
 
+    // DELETE route
+expense.delete('/:expense_id', async function (req, res) {
+    try {
+        const { expense_id } = req.params;
+        const deleteExpense = await pool.query(
+            "DELETE FROM expenses WHERE expense_id = $1",
+            [expense_id]
+        );
 
+        res.json('Expense Deleted');
+
+    } catch (error) {
+        res.status(404).send('ERROR 404 Page Not Found!');
+    }
+});
 
 
 
