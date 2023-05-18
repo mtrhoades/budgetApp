@@ -42,6 +42,17 @@ const deleteAccount = async (account_id) => {
 }
 
 
+// helper function for total at end of table
+const totalBalance = (accounts) => {
+    let sum = 0;
+    for(let i = 0; i < accounts.length; i++) {
+        sum = sum + accounts.balance[i]
+    }
+};
+
+console.log(totalBalance())
+
+
 // useEffect section:
 useEffect(() => {
     getAccounts();
@@ -79,6 +90,12 @@ useEffect(() => {
                     <td>{account.account_date.split('', 10)}</td>
                 </tr>
                 ))}
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td style={{fontWeight: 'bold'}}>Total</td>
+                    <td>{}</td>
+                </tr>
                 
             </tbody>
         </table>
