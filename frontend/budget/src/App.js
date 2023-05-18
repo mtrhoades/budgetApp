@@ -8,23 +8,27 @@ import MonthlyTotals from './components/MonthlyTotals';
 
 function App() {
   return (
-    <div className="App" style={{}}>
+    <div className="App" 
+    style={{padding: '10rem', width: '100vw', display: 'flex', justifyContent: 'space-evenly'}}
+    >
 
-      <div style={{width: '50vw'}}>
+      <div>
         <BankAccounts />
+
+        <div style={{paddingTop: '60px'}}>
+          <Income />
+        </div>
+
       </div>
 
-      <div style={{paddingTop: '25px'}}>
-        <Income />
-      </div>
-
-      <div style={{paddingTop: '25px'}}>
+      <div>
         <Expenses />
       </div>
 
-      <div style={{paddingTop: '25px'}}>
+      <div>
         <MonthlyTotals />
       </div>
+
 
     </div>
   );

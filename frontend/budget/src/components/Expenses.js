@@ -52,7 +52,7 @@ useEffect(() => {
 
         <AddExpenseModal />
 
-        <table className="w-50 table table-danger .table-hover .table-bordered border-danger text-center">
+        <table className="table table-danger .table-hover .table-bordered border-danger text-center">
             <thead>
                 <tr>
                   <th scope="col"></th>

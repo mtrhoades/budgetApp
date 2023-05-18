@@ -55,7 +55,7 @@ useEffect(() => {
         <AddIncomeModal />
 
 
-        <table className="w-50 table table-success .table-hover .table-bordered border-success text-center">
+        <table className="table table-success .table-hover .table-bordered border-success text-center">
             <thead>
                 <tr>
                   <th scope="col"></th>

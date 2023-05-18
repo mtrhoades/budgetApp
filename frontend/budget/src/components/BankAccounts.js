@@ -54,7 +54,7 @@ useEffect(() => {
 
         <AddBankAccountModal />
 
-        <table className="w-50 table table-info table-hover .table-bordered border-info text-center">
+        <table className="table table-info table-hover .table-bordered border-info text-center">
             <thead>
                 <tr>
                     <th scope="col"></th>
