@@ -27,6 +27,10 @@ app.use('/bankaccount', bankAccountController);
 const incomeController = require('./controllers/income_controller');
 app.use('/income', incomeController);
 
+    // expensese controller
+const expenseController = require('./controllers/expenses_controller');
+app.use('/expense', expenseController);
+
 // server listen
 app.listen(PORT, () => {
     console.log('Yeahhh we connected up in here!')

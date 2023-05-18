@@ -58,17 +58,17 @@ const AddBankAccountModal = () => {
         <Modal show={show} onHide={handleClose}>
             <Modal.Header
                 closeButton>
-            <Modal.Title>Add a Bank Account</Modal.Title>
+            <Modal.Title>Add Bank Account</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <Form>
 
                     <Form.Group className="mb-3 accountName">
                         <Form.Label>Bank Account Name:</Form.Label>
-                        <input type="text" name="nameTextBox" id="nameTextBox" required
+                        <Form.Control type="text" name="nameTextBox" id="nameTextBox" required
                         value={ account_name }
                         onChange={e => setAccount_name(e.target.value)}
-                        ></input>
+                        />
                     </Form.Group>
 
                     <Form.Group className="mb-3, accountType">
@@ -98,17 +98,14 @@ const AddBankAccountModal = () => {
 
                     <Form.Group className="mb-3 date">
                         <Form.Label>Current Date:</Form.Label>
-                        <input type="date" name="dateTextBox" id="dateTextBox" value={account_date.toLocaleDateString('en-CA')} onChange={findCurrentDate} ></input>
+                        <Form.Control type="date" name="dateTextBox" id="dateTextBox" value={account_date.toLocaleDateString('en-CA')} onChange={findCurrentDate} />
                     </Form.Group>
 
                 </Form>
             </Modal.Body>
             <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-                Close
-            </Button>
             <Button variant="primary" onClick={onSubmitForm}>
-                Save Changes
+                Add
             </Button>
             </Modal.Footer>
         </Modal>    

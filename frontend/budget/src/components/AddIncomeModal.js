@@ -67,16 +67,16 @@ const onSubmitForm =  async(e) => {
             <Modal.Body>
             <Form>
 
-              <Form.Group className="mb-3 accountName">
+              <Form.Group className="mb-3 income">
                   <Form.Label>Income Source:</Form.Label>
-                  <input type="text" name="nameTextBox" id="nameTextBox" required
+                  <Form.Control type="text" name="income" id="income" required
                   value={ income_source }
                   onChange={e => setIncome_source(e.target.value)}
-                  ></input>
+                  />
               </Form.Group>
 
-              <Form.Group className="mb-3 balance">
-                  <Form.Label for="currency-field">Enter Amount:</Form.Label>
+              <Form.Group className="mb-3 amount">
+                  <Form.Label for="currency-field">Enter Income Amount:</Form.Label>
                   <Form.Control
                   type="Text"
                   name="currency-field"
@@ -88,15 +88,15 @@ const onSubmitForm =  async(e) => {
               </Form.Group>
 
               <Form.Group className="mb-3 date">
-                  <Form.Label>Current Date:</Form.Label>
-                  <input type="date" name="dateTextBox" id="dateTextBox" value={income_date.toLocaleDateString('en-CA')} onChange={findCurrentDate} ></input>
+                  <Form.Label>Date Received:</Form.Label>
+                  <Form.Control type="date" name="dateTextBox" id="dateTextBox" value={income_date.toLocaleDateString('en-CA')} onChange={findCurrentDate} />
               </Form.Group>
 
             </Form>
 
             </Modal.Body>
             <Modal.Footer>
-            <Button variant="outline-success" onClick={onSubmitForm}>
+            <Button variant="success" onClick={onSubmitForm}>
                 Add
             </Button>
             </Modal.Footer>

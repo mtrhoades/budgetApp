@@ -29,7 +29,7 @@ income.post('/', async (req, res) => {
             [income_source, income_amount, income_date]
         );
 
-            res.json(newIncome.rows[0])
+        res.json(newIncome.rows[0])
 
     } catch (error) {
         res.status(404).send('Error 404 Page Not Found!');
