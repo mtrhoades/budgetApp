@@ -6,7 +6,7 @@ CREATE TABLE bankaccounts(
     account_id SERIAL PRIMARY KEY,
     account_name VARCHAR(255),
     account_type VARCHAR(255),
-    balance NUMERIC,
+    balance NUMERIC(10,2),
     account_date DATE
 );
 

@@ -47,7 +47,7 @@ const totalBalance = () => {
     console.log(accounts)
     let sum = 0;
     for(let i = 0; i < accounts.length; i++) {
-        sum += accounts[i].balance
+        sum += parseFloat((accounts[i].balance))
     }
     return sum;
 };
