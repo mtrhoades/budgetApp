@@ -26,7 +26,7 @@ INSERT INTO bankaccounts(
 CREATE TABLE income(
     income_id SERIAL PRIMARY KEY,
     income_source VARCHAR(255),
-    income_amount MONEY,
+    income_amount NUMERIC(10,2),
     income_date DATE
 );
 

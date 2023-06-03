@@ -41,6 +41,20 @@ const deleteIncome = async (income_id) => {
 }
 
 
+// helper function for total at end of table
+const totalIncomes = () => {
+  console.log(incomes)
+  let sum = 0;
+  for(let i = 0; i < incomes.length; i++) {
+      sum += parseFloat((incomes[i].income_amount))
+  }
+  return sum;
+};
+
+console.log(totalIncomes());
+
+
+
   // useEffect section
 useEffect(() => {
   getIncomes();
@@ -79,6 +93,12 @@ useEffect(() => {
                 </tr>
                 ))}
                 
+                <tr>
+                  <td></td>
+                  <td style={{fontWeight: 'bold'}}>Total</td>
+                  <td style={{fontWeight: 'bold'}}>{totalIncomes()}</td>
+                </tr>
+
             </tbody>
         </table>
 
