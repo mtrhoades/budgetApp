@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import AddBankAccountModal from './AddBankAccountModal';
 import CloseButton from 'react-bootstrap/CloseButton';
+import { CiEdit } from 'react-icons/ci'
 
 
 
@@ -54,6 +55,11 @@ const totalBalance = () => {
 
 console.log(totalBalance());
 
+// helper function for onClick event edit button
+const editButton = () => {
+    console.log('Edit this shit bitch!')
+}
+
 
 // useEffect section:
 useEffect(() => {
@@ -75,6 +81,7 @@ useEffect(() => {
                     <th scope="col">Type</th>
                     <th scope="col">Balance</th>
                     <th scope="col">Current Date</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -90,6 +97,7 @@ useEffect(() => {
                     <td>{account.account_type}</td>
                     <td>$ {account.balance}</td>
                     <td>{account.account_date.split('', 10)}</td>
+                    <td><CiEdit style={{width: '20px', height: '20px'}} onClick={editButton()} /></td>
                 </tr>
                 ))}
                 <tr>
@@ -97,6 +105,8 @@ useEffect(() => {
                     <td></td>
                     <td style={{fontWeight: 'bold'}}>Total</td>
                     <td style={{fontWeight: 'bold'}}>$ {totalBalance()}</td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 
             </tbody>

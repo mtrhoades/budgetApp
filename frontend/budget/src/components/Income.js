@@ -88,7 +88,7 @@ useEffect(() => {
                     />
                   </td>
                   <td>{income.income_source}</td>
-                  <td>{income.income_amount}</td>
+                  <td>$ {income.income_amount}</td>
                   <td>{income.income_date.split('', 10)}</td>
                 </tr>
                 ))}
@@ -96,7 +96,8 @@ useEffect(() => {
                 <tr>
                   <td></td>
                   <td style={{fontWeight: 'bold'}}>Total</td>
-                  <td style={{fontWeight: 'bold'}}>{totalIncomes()}</td>
+                  <td style={{fontWeight: 'bold'}}>$ {totalIncomes()}</td>
+                  <td></td>
                 </tr>
 
             </tbody>

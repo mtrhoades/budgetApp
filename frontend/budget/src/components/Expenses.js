@@ -40,6 +40,20 @@ const deleteExpense = async (expense_id) => {
 };
 
 
+// helper function for total at end of table
+const totalExpenses = () => {
+  console.log(expenses)
+  let sum = 0;
+  for(let i = 0; i < expenses.length; i++) {
+      sum += parseFloat((expenses[i].expense_amount))
+  }
+  return sum;
+};
+
+console.log(totalExpenses());
+
+
+
 // useEffect HERE!
 useEffect(() => {
   getExpenses();
@@ -71,10 +85,18 @@ useEffect(() => {
                   />
                 </td>
                 <td>{expense.expense_expense}</td>
-                <td>{expense.expense_amount}</td>
+                <td>$ {expense.expense_amount}</td>
                 <td>{expense.expense_date.split('', 10)}</td>
               </tr>
               ))}
+
+              <tr>
+                <td></td>
+                <td style={{fontWeight: 'bold'}}>Total</td>
+                <td style={{fontWeight: 'bold'}}>$ {totalExpenses().toFixed(2)}</td>
+                <td></td>
+              </tr>
+
             </tbody>
         </table>
 
