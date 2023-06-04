@@ -41,7 +41,7 @@ INSERT INTO income(
 CREATE TABLE expenses(
     expense_id SERIAL PRIMARY KEY,
     expense_expense VARCHAR(255),
-    expense_amount MONEY,
+    expense_amount NUMERIC(10,2),
     expense_date DATE
 );
 
