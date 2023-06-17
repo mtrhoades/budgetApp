@@ -98,14 +98,14 @@ useEffect(() => {
                     <td>{account.account_type}</td>
                     <td>$ {account.balance}</td>
                     <td>{account.account_date.split('', 10)}</td>
-                    <td><EditBankAccountModal /></td>
+                    <td><EditBankAccountModal account={account} /></td>
                 </tr>
                 ))}
                 <tr>
                     <td></td>
                     <td></td>
                     <td style={{fontWeight: 'bold'}}>Total</td>
-                    <td style={{fontWeight: 'bold'}}>$ {totalBalance()}</td>
+                    <td style={{fontWeight: 'bold'}}>$ {totalBalance().toFixed(2)}</td>
                     <td></td>
                     <td></td>
                 </tr>

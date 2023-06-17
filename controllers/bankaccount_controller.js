@@ -71,6 +71,24 @@ bankaccount.get('/:account_id', async (req, res) => {
 });
 
 
+// PUT (edit) route for editing a single bank account entry
+bankaccount.put('/:account_id' , async (req, res) => {
+    try {
+        const { account_id } = req.params;
+        const { account_name, account_type, balance, account_date } = req.body;
+        const editBankAccount = await pool.query(
+            "UPDATE bankaccounts SET account_name = $1, account_type = $2, balance = $3, account_date = $4 WHERE account_id = $5",
+            [account_name, account_type, balance, account_date, account_id]
+        );
+
+            res.json('Bank Account Was Updated!')
+
+    } catch (error) {
+        res.status(404).send('Error 404 Page Not Found!')
+    }
+});
+
+
 
 
 

@@ -98,7 +98,13 @@ const AddBankAccountModal = () => {
 
                     <Form.Group className="mb-3 date">
                         <Form.Label>Current Date:</Form.Label>
-                        <Form.Control type="date" name="dateTextBox" id="dateTextBox" value={account_date.toLocaleDateString('en-CA')} onChange={findCurrentDate} />
+                        <Form.Control
+                            type="date"
+                            name="dateTextBox"
+                            id="dateTextBox"
+                            value={account_date.toLocaleDateString('en-CA')}
+                            onChange={findCurrentDate}
+                        />
                     </Form.Group>
 
                 </Form>

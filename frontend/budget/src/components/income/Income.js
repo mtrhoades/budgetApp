@@ -96,7 +96,7 @@ useEffect(() => {
                 <tr>
                   <td></td>
                   <td style={{fontWeight: 'bold'}}>Total</td>
-                  <td style={{fontWeight: 'bold'}}>$ {totalIncomes()}</td>
+                  <td style={{fontWeight: 'bold'}}>$ {totalIncomes().toFixed(2)}</td>
                   <td></td>
                 </tr>
 
