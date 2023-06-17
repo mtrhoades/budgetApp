@@ -1,8 +1,8 @@
 // imports
 import './App.css';
-import Expenses from "./components/Expenses";
-import Income from "./components/Income";
-import BankAccounts from "./components/BankAccounts";
+import Expenses from "./components/expenses/Expenses";
+import Income from "./components/income/Income";
+import BankAccounts from "./components/bankaccounts/BankAccounts";
 import MonthlyTotals from './components/MonthlyTotals';
 
 
