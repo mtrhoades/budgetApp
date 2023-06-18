@@ -107,7 +107,7 @@ console.log(account);
                             type="date"
                             name="dateTextBox"
                             id="dateTextBox"
-                            value={ account_date }
+                            value={account_date}
                             onChange={e => setAccount_date(e.target.value)}
                         />
                     </Form.Group>
