@@ -107,7 +107,7 @@ useEffect(() => {
                     <td></td>
                     <td></td>
                     <td style={{fontWeight: 'bold'}}>Total</td>
-                    <td style={{fontWeight: 'bold'}}>$ {totalBalance().toLocaleString('en-US', {minimumFractionDigits: 1, maximumFractionDigits: 2})}</td>
+                    <td style={{fontWeight: 'bold'}}>$ {totalBalance().toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
                     <td></td>
                     <td></td>
                 </tr>
