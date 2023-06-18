@@ -9,7 +9,7 @@ import { useState } from 'react';
 const AddBankAccountModal = () => {
 // vanilla js section:
     let defaultDate = new Date();
-    defaultDate.setDate(defaultDate.getDate())
+    defaultDate.setDate(defaultDate.getDate());
 // useState section:
    const [show, setShow] = useState(false); // for modal
 

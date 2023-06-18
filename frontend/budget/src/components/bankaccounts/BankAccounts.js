@@ -44,6 +44,8 @@ const deleteAccount = async (account_id) => {
 }
 
 
+
+
 // helper function for total at end of table
 const totalBalance = () => {
     console.log(accounts)
@@ -96,7 +98,7 @@ useEffect(() => {
                     </td>
                     <td>{account.account_name}</td>
                     <td>{account.account_type}</td>
-                    <td>$ {account.balance}</td>
+                    <td>$ {parseInt(account.balance).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
                     <td>{account.account_date.split('', 10)}</td>
                     <td><EditBankAccountModal account={account} /></td>
                 </tr>
@@ -105,7 +107,7 @@ useEffect(() => {
                     <td></td>
                     <td></td>
                     <td style={{fontWeight: 'bold'}}>Total</td>
-                    <td style={{fontWeight: 'bold'}}>$ {totalBalance().toFixed(2)}</td>
+                    <td style={{fontWeight: 'bold'}}>$ {totalBalance().toLocaleString('en-US', {minimumFractionDigits: 1, maximumFractionDigits: 2})}</td>
                     <td></td>
                     <td></td>
                 </tr>

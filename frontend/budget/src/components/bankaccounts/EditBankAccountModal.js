@@ -12,9 +12,6 @@ const AddBankAccountModal = ( { account } ) => {
 // vanilla js section:
 console.log(account);
 
-let defaultDate = new Date();
-defaultDate.setDate(defaultDate.getDate())
-
 
 // useState section:
    const [show, setShow] = useState(false); // for modal
@@ -22,13 +19,9 @@ defaultDate.setDate(defaultDate.getDate())
    const [account_name, setAccount_name] = useState(account.account_name); // for bank account name
    const [account_type, setAccount_type] = useState(account.account_type); // for bank account type
    const [balance, setBalance] = useState(account.balance); // for balance input
-   const [account_date, setAccount_date] = useState(defaultDate); // for current date
+   const [account_date, setAccount_date] = useState(account.account_date); // for current date
 
 
-// date functions for current date
-const findCurrentDate = (e) => {
-    setAccount_date(new Date(e.target.value))
-};
 
 
 // modal helper functons:
@@ -114,8 +107,8 @@ const findCurrentDate = (e) => {
                             type="date"
                             name="dateTextBox"
                             id="dateTextBox"
-                            value={account_date.toLocaleDateString('en-CA')}
-                            onChange={findCurrentDate}
+                            value={ account_date }
+                            onChange={e => setAccount_date(e.target.value)}
                         />
                     </Form.Group>
 
